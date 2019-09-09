@@ -92,5 +92,11 @@ public class Calculate {
 		return answer;		
 	}
 	
+	//A call to isDivisibleBy determines whether or not one integer is divisible by another
+	//It accepts two integers and returns a boolean
+	public static boolean isDivisibleBy(int number1, int number2) {
+			
+	}
+	
 }
 
