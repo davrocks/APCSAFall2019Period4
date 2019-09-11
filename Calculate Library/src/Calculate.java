@@ -93,10 +93,84 @@ public class Calculate {
 	}
 	
 	//A call to isDivisibleBy determines whether or not one integer is divisible by another
-	//It accepts two integers and returns a boolean
+	//It accepts two integers and returns a boolean.
 	public static boolean isDivisibleBy(int number1, int number2) {
-			
+			if (number1%number2 == 0) {
+				return true;
+			} else {
+				return false;
+			}
 	}
 	
+	//A call to absValue returns the absolute value of a number passed.
+	//It accepts and returns a double.
+	public static double absValue(double number1) {
+		if (number1 >= 0) {
+			return number1;
+		} else {
+			return -number1;
+		}
+	}
+	
+	//A call to max returns the larger of the two values
+	//It accepts two doubles and returns a double.
+	public static double max(double number1, double number2) {
+		if (number1 >= number2) {
+			return number1;
+		} else {
+			return number2;
+		}
+	}
+	
+	//A call to max returns the larger of the three values
+	//It accepts three doubles and returns a double.
+	public static double max(double number1, double number2, double number3) {
+		double answer = max(number1, max(number2, number3));
+		return answer;
+	}
+	
+	//A call to min returns the smaller of the two values
+	//It accepts two doubles and returns a double.
+	public static double min(double number1, double number2) {
+		if (number1 <= number2) {
+			return number1;
+		} else {
+			return number2;
+		}
+	}
+	
+	//A call to round2 rounds a double to 2 decimal places
+	//It accepts a double and returns a double
+	public static double round2(double number1) {
+		number1 = number1 * 100;
+		if (number1>=0) {
+			number1 = number1 + 0.5;
+		} else {
+			number1 = number1 - 0.5;
+		}
+		number1 = (int) number1;
+		number1 = ((double) number1)/100;
+		return number1;
+	}
+
+	//A call to exponent raises the value to a positive integer power
+	//It accepts a double and an integer and returns a double.
+	public static double exponent(double base, int power) {
+		double answer = 1;
+		for (int i=0; i<power; i++) {
+			answer = answer*base;
+		}
+		return answer;
+	}
+	
+	//A call to factorial returns the factorial of the value passed
+	//It accepts and returns an integer
+	public static int factorial(int number1) {
+		int answer = 1;
+		for (int i = 0; i<number1; i++) {
+			answer = number1*(number1-i);
+		}
+		return answer;
+	}
 }
 
