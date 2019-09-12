@@ -167,10 +167,16 @@ public class Calculate {
 	//It accepts and returns an integer
 	public static int factorial(int number1) {
 		int answer = 1;
-		for (int i = 0; i<number1; i++) {
-			answer = number1*(number1-i);
+		for (int i = 2; i<=number1; i++) {
+			answer = answer*i;
 		}
 		return answer;
+	}
+	
+	//A call to isPrime detemines whether or not an integer is prime.
+	//It accepts an integer and returns a boolean
+	public static int isPrime(int number1) {
+		for(int i = number1; )
 	}
 }
 

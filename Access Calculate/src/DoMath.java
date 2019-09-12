@@ -32,6 +32,9 @@ public class DoMath {
 			System.out.println(Calculate.round2(-1.524));
 			System.out.println(Calculate.round2(1664.999999));
 			System.out.println(Calculate.exponent(2,0));
+			System.out.println(Calculate.factorial(1));
+			System.out.println(Calculate.factorial(0));
+			System.out.println(Calculate.factorial(7));
 			
 			
 	}
