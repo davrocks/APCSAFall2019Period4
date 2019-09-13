@@ -175,8 +175,27 @@ public class Calculate {
 	
 	//A call to isPrime detemines whether or not an integer is prime.
 	//It accepts an integer and returns a boolean
-	public static int isPrime(int number1) {
-		for(int i = number1; )
+	public static boolean isPrime(int number1) {
+		boolean value = false;
+		if (number1 == 2 || number1 == -2) {
+			return true;
+		}
+		for(int i = 2; i < absValue(number1); i++) {
+			if (isDivisibleBy(number1,i) == true) {
+				return false;
+			} else {
+				value = true;
+			}
+		}	
+		return value;
+	}
+	
+	//A call to gcf finds the greatest common factor of two positive integers.
+	//It accepts two positive integers and returns an integer.
+	public static int gcf(int number1) {
+		for (int i = 1; i <= number1; i++) {
+			
+		}
 	}
 }
 
