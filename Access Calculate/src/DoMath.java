@@ -40,6 +40,10 @@ public class DoMath {
 			System.out.println(Calculate.isPrime(26));
 			System.out.println(Calculate.isPrime(2));
 			System.out.println(Calculate.isPrime(-5));
+			System.out.println(Calculate.gcf(24,18));
+			System.out.println(Calculate.gcf(-6,3));
+			System.out.println(Calculate.gcf(15,7));
+			System.out.println(Calculate.gcf(-24,18));
 			
 			
 	}

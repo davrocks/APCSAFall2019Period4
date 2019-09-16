@@ -192,10 +192,20 @@ public class Calculate {
 	
 	//A call to gcf finds the greatest common factor of two positive integers.
 	//It accepts two positive integers and returns an integer.
-	public static int gcf(int number1) {
-		for (int i = 1; i <= number1; i++) {
-			
+	public static int gcf(int number1, int number2) {
+		int answer = 1;
+		for (int i = 1; i <= absValue(min(number1, number2)); i++) {
+			if (isDivisibleBy(number1, i) == true && isDivisibleBy(number2, i) == true) {
+				answer = i;
+			}
 		}
+		return answer;
+	}
+	
+	//A call to sqrt returns an approximation of the square root of the value (to 2 decimal places)
+	//This method accepts and returns a double
+	public static double sqrt(double number1, double number2) {
+		
 	}
 }
 
