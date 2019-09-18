@@ -204,8 +204,13 @@ public class Calculate {
 	
 	//A call to sqrt returns an approximation of the square root of the value (to 2 decimal places)
 	//This method accepts and returns a double
-	public static double sqrt(double number1, double number2) {
-		
+	public static double sqrt(double number1) {
+		double guess = 1;
+		while (absValue(number1-guess*guess) > 0) {
+			guess = 0.5*(number1/guess + guess);
+		}
+		guess = round2(guess);
+		return guess;
 	}
 }
 
