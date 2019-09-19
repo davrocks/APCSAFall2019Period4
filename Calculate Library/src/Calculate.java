@@ -212,5 +212,11 @@ public class Calculate {
 		guess = round2(guess);
 		return guess;
 	}
+
+	//quadForm uses the coefficients of a quadratic equation in standard form to approximate real roots
+	//it accepts 3 integers and returns a string
+	public static String quadForm(int a, int b, int c) {
+		
+	}
 }
 
