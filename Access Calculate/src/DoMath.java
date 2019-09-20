@@ -52,6 +52,7 @@ public class DoMath {
 			System.out.println(Calculate.quadForm(4, 1, 7));
 			
 			
+			
 	}
 
 }

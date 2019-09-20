@@ -169,13 +169,13 @@ public class Calculate {
 	//It accepts a double and returns a double
 	public static double round2(double number1) {
 		number1 = number1 * 100;
-		if (number1>=0) {                 //subtracts from negative numbers, adds to positive numbers
+		if (number1>=0) {                    //subtracts from negative numbers, adds to positive numbers
 			number1 = number1 + 0.5;
 		} else {
 			number1 = number1 - 0.5;
 		}
-		number1 = (int) number1;        //truncate
-		number1 = ((double) number1)/100;        //undo the first operation (multiply by 100)
+		number1 = (int) number1;             //truncate
+		number1 = ((double) number1)/100;    //undo the first operation (multiply by 100)
 		return number1;
 	}
 
@@ -193,9 +193,9 @@ public class Calculate {
 		if (power < 0) {
 			throw new IllegalArgumentException("no negative powers allowed");
 		}
-		double answer = 1;
-		for (int i=0; i<power; i++) {
-			answer = answer*base;
+		double answer = 1;                      //initialize to 1
+		for (int i=0; i<power; i++) {           //increase the number of multiplications until it reaches the proper number
+			answer = answer*base;                       //multiply another time
 		}
 		return answer;
 	}
@@ -206,8 +206,8 @@ public class Calculate {
 		if (number1 < 0) {
 			throw new IllegalArgumentException("no negative inputs allowed");
 		}
-		int answer = 1;
-		for (int i = 2; i<=number1; i++) {
+		int answer = 1;                                  //initialize to 1
+		for (int i = 2; i<=number1; i++) {               //keep multiplying by the next integer until the integer reaches the input    
 			answer = answer*i;
 		}
 		return answer;
@@ -217,10 +217,10 @@ public class Calculate {
 	//It accepts an integer and returns a boolean
 	public static boolean isPrime(int number1) {
 		boolean value = false;
-		if (number1 == 2 || number1 == -2) {
+		if (number1 == 2 || number1 == -2) {               //2 and -2 are always prime
 			return true;
 		}
-		for(int i = 2; i < absValue(number1); i++) {
+		for(int i = 2; i < absValue(number1); i++) {       //check for any divisors between 1 and the input
 			if (isDivisibleBy(number1,i) == true) {
 				return false;
 			} else {
@@ -237,7 +237,7 @@ public class Calculate {
 			throw new IllegalArgumentException("no inputs of zero allowed");
 		}
 		int answer = 1;
-		for (int i = 1; i <= absValue(min(number1, number2)); i++) {
+		for (int i = 1; i <= absValue(min(number1, number2)); i++) {                 //find divisors, and keep running the loop until the highest divisor has been found
 			if (isDivisibleBy(number1, i) == true && isDivisibleBy(number2, i) == true) {
 				answer = i;
 			}
@@ -252,7 +252,7 @@ public class Calculate {
 			throw new IllegalArgumentException("no negative inputs allowed in sqrt");
 		}
 		double guess = 1;
-		while (absValue(radicand-guess*guess) > 0) {
+		while (absValue(radicand-guess*guess) > 0) {                  //repeat newton's algorithm until the difference is 0
 			guess = 0.5*(radicand/guess + guess);
 		}
 		guess = round2(guess);
