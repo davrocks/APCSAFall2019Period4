@@ -75,8 +75,11 @@ public class Calculate {
 	//A call to toImproperFrac converts a mixed number (with the pieces provided as whole number, numerator, and denominator) to an improper fraction.
 	//It accepts three integers and returns a String.
 	public static String toImproperFrac(int wholeNumber, int inputNumerator, int inputDenominator) {
+		if (wholeNumber < 0 || inputNumerator < 0 || inputDenominator < 0) {
+			throw new IllegalArgumentException("no negative inputs allowed, since part 1 is not supposed to use if statements");
+		}
 		if (inputDenominator == 0) {
-			throw new IllegalArgumentException("no negative denominators allowed");
+			throw new IllegalArgumentException("denominators of zero are undefined");
 		}
 		int newNumerator = wholeNumber*inputDenominator+inputNumerator;
 		int newDenominator = inputDenominator;
@@ -87,8 +90,11 @@ public class Calculate {
 	//A call to toMixedNum converts input in the form numerator, denominator (such as 7, 2)to a string that is a mixed number in the form 3_1/2
 	//It accepts two integers and outputs a String
 	public static String toMixedNum(int inputNumerator, int inputDenominator) {
+		if (inputNumerator < 0 || inputDenominator < 0) {
+			throw new IllegalArgumentException("no negative inputs allowed, since part 1 is not supposed to use if statements");
+		}
 		if (inputDenominator == 0) {
-			throw new IllegalArgumentException("no negative denominators allowed");
+			throw new IllegalArgumentException("denominators of zero are undefined");
 		}
 		int wholeNumber = inputNumerator / inputDenominator;
 		int newNumerator = inputNumerator % inputDenominator;
