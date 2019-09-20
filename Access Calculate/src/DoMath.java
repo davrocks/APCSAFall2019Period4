@@ -47,6 +47,9 @@ public class DoMath {
 			System.out.println(Calculate.sqrt(121));
 			System.out.println(Calculate.sqrt(0));
 			System.out.println(Calculate.sqrt(30));
+			System.out.println(Calculate.quadForm(1, 4, 4));
+			System.out.println(Calculate.quadForm(1, -5, 6));
+			System.out.println(Calculate.quadForm(4, 1, 7));
 			
 			
 	}

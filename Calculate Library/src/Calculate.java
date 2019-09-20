@@ -57,9 +57,9 @@ public class Calculate {
 	
 	//A call to discriminant returns the value of the discriminant given doubles a, b, and c in that order.
 	//It accepts 3 doubles and returns a double.
-	public static double discriminant(double number1, double number2, double number3) {
+	public static double discriminant(double a, double b, double c) {
 		double answer = 0;
-		answer = number2*number2-4*number1*number3;
+		answer = b*b-4*a*c;
 		return answer;
 	}
 
@@ -216,7 +216,21 @@ public class Calculate {
 	//quadForm uses the coefficients of a quadratic equation in standard form to approximate real roots
 	//it accepts 3 integers and returns a string
 	public static String quadForm(int a, int b, int c) {
-		
+		double root1;
+		double root2;
+		if (discriminant(a, b, c) < 0) {
+			return "no real roots";
+		}
+		if (discriminant(a,b,c) > 0) {
+			root1 = (-b + sqrt(discriminant(a,b,c)) ) / (2*a);
+			root2 = (-b - sqrt(discriminant(a,b,c)) ) / (2*a);
+			return "" + root1 + " and " + root2;
+		}
+		if (discriminant(a,b,c) == 0) {
+			root1 = (-b + sqrt(discriminant(a,b,c)) ) / (2*a);
+			return "" + root1;
+		}
+		return "placeholder";
 	}
 }
 
