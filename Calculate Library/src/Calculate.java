@@ -6,17 +6,17 @@
 public class Calculate {
 	//A call to square returns the square of the value passed.
 	//It accepts and returns an integer.
-	public static int square(int number) {
+	public static int square(int base) {
 		int answer = 0;
-		answer = number*number;
+		answer = base*base;
 		return answer;
 	}
 	
 	//A call to cube returns the cube of the value passed.
 	//It accepts and returns an integer.
-	public static int cube(int number) {
+	public static int cube(int base) {
 		int answer = 0;
-		answer = number*number*number;
+		answer = base*base*base;
 		return answer;		
 	}
 
@@ -65,20 +65,26 @@ public class Calculate {
 
 	//A call to toImproperFrac converts a mixed number (with the pieces provided as whole number, numerator, and denominator) to an improper fraction.
 	//It accepts three integers and returns a String.
-	public static String toImproperFrac(int number1, int number2, int number3) {
-		int numerator = number1*number3+number2;
-		int denominator = number3;
-		String answer = ""+numerator+"/"+denominator;
+	public static String toImproperFrac(int wholeNumber, int inputNumerator, int inputDenominator) {
+		if (inputDenominator == 0) {
+			throw new IllegalArgumentException("no negative denominators allowed");
+		}
+		int newNumerator = wholeNumber*inputDenominator+inputNumerator;
+		int newDenominator = inputDenominator;
+		String answer = ""+newNumerator+"/"+newDenominator;
 		return answer;		
 	}
 	
 	//A call to toMixedNum converts input in the form numerator, denominator (such as 7, 2)to a string that is a mixed number in the form 3_1/2
 	//It accepts two integers and outputs a String
-	public static String toMixedNum(int number1, int number2) {
-		int wholeNumber = number1 / number2;
-		int numerator = number1 % number2;
-		int denominator = number2;
-		String answer = "" + wholeNumber + "_" + numerator + "/" + denominator;
+	public static String toMixedNum(int inputNumerator, int inputDenominator) {
+		if (inputDenominator == 0) {
+			throw new IllegalArgumentException("no negative denominators allowed");
+		}
+		int wholeNumber = inputNumerator / inputDenominator;
+		int newNumerator = inputNumerator % inputDenominator;
+		int newDenominator = inputDenominator;
+		String answer = "" + wholeNumber + "_" + newNumerator + "/" + newDenominator;
 		return answer;		
 	}
 	
@@ -94,12 +100,15 @@ public class Calculate {
 	
 	//A call to isDivisibleBy determines whether or not one integer is divisible by another
 	//It accepts two integers and returns a boolean.
-	public static boolean isDivisibleBy(int number1, int number2) {
-			if (number1%number2 == 0) {
-				return true;
-			} else {
-				return false;
-			}
+	public static boolean isDivisibleBy(int largerNumber, int smallerNumber) {
+		if (smallerNumber == 0) {
+			throw new IllegalArgumentException("dividing by zero is undefined");
+		}
+		if (largerNumber%smallerNumber == 0) {
+			return true;
+		} else {
+			return false;
+		}
 	}
 	
 	//A call to absValue returns the absolute value of a number passed.
@@ -143,19 +152,22 @@ public class Calculate {
 	//It accepts a double and returns a double
 	public static double round2(double number1) {
 		number1 = number1 * 100;
-		if (number1>=0) {
+		if (number1>=0) {                 //subtracts from negative numbers, adds to positive numbers
 			number1 = number1 + 0.5;
 		} else {
 			number1 = number1 - 0.5;
 		}
-		number1 = (int) number1;
-		number1 = ((double) number1)/100;
+		number1 = (int) number1;        //truncate
+		number1 = ((double) number1)/100;        //undo the first operation (multiply by 100)
 		return number1;
 	}
 
 	//A call to exponent raises the value to a positive integer power
 	//It accepts a double and an integer and returns a double.
 	public static double exponent(double base, int power) {
+		if (power < 0) {
+			throw new IllegalArgumentException("no negative powers allowed");
+		}
 		double answer = 1;
 		for (int i=0; i<power; i++) {
 			answer = answer*base;
@@ -166,6 +178,9 @@ public class Calculate {
 	//A call to factorial returns the factorial of the value passed
 	//It accepts and returns an integer
 	public static int factorial(int number1) {
+		if (number1 < 0) {
+			throw new IllegalArgumentException("no negative inputs allowed");
+		}
 		int answer = 1;
 		for (int i = 2; i<=number1; i++) {
 			answer = answer*i;
@@ -173,7 +188,7 @@ public class Calculate {
 		return answer;
 	}
 	
-	//A call to isPrime detemines whether or not an integer is prime.
+	//A call to isPrime determines whether or not an integer is prime.
 	//It accepts an integer and returns a boolean
 	public static boolean isPrime(int number1) {
 		boolean value = false;
@@ -193,6 +208,9 @@ public class Calculate {
 	//A call to gcf finds the greatest common factor of two positive integers.
 	//It accepts two positive integers and returns an integer.
 	public static int gcf(int number1, int number2) {
+		if (number1 == 0 || number2 == 0) {
+			throw new IllegalArgumentException("no inputs of zero allowed");
+		}
 		int answer = 1;
 		for (int i = 1; i <= absValue(min(number1, number2)); i++) {
 			if (isDivisibleBy(number1, i) == true && isDivisibleBy(number2, i) == true) {
@@ -204,10 +222,13 @@ public class Calculate {
 	
 	//A call to sqrt returns an approximation of the square root of the value (to 2 decimal places)
 	//This method accepts and returns a double
-	public static double sqrt(double number1) {
+	public static double sqrt(double radicand) {
+		if (radicand<0) {
+			throw new IllegalArgumentException("no negative inputs allowed in sqrt");
+		}
 		double guess = 1;
-		while (absValue(number1-guess*guess) > 0) {
-			guess = 0.5*(number1/guess + guess);
+		while (absValue(radicand-guess*guess) > 0) {
+			guess = 0.5*(radicand/guess + guess);
 		}
 		guess = round2(guess);
 		return guess;
