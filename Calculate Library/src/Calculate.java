@@ -4,6 +4,15 @@
  * group of methods that perform math calculations (a library)
  */
 public class Calculate {
+	
+	
+	
+	
+	// PART 1, METHODS, HEADERS, AND BASIC MATH
+	
+	
+	
+	
 	//A call to square returns the square of the value passed.
 	//It accepts and returns an integer.
 	public static int square(int base) {
@@ -98,6 +107,14 @@ public class Calculate {
 		return answer;		
 	}
 	
+	
+	
+	
+	//PART 2: METHODS WITH CONDITIONALS
+	
+	
+	
+	
 	//A call to isDivisibleBy determines whether or not one integer is divisible by another
 	//It accepts two integers and returns a boolean.
 	public static boolean isDivisibleBy(int largerNumber, int smallerNumber) {
@@ -162,6 +179,14 @@ public class Calculate {
 		return number1;
 	}
 
+	
+	
+	
+	//PART 3: METHODS THAT USE LOOPS AND CALLS TO OTHER METHODS
+	
+	
+	
+	
 	//A call to exponent raises the value to a positive integer power
 	//It accepts a double and an integer and returns a double.
 	public static double exponent(double base, int power) {
@@ -234,6 +259,14 @@ public class Calculate {
 		return guess;
 	}
 
+	
+	
+	
+	//PART 4: THROWING EXCEPTIONS (AND QUADFORM)
+	
+	
+	
+	
 	//quadForm uses the coefficients of a quadratic equation in standard form to approximate real roots
 	//it accepts 3 integers and returns a string
 	public static String quadForm(int a, int b, int c) {
