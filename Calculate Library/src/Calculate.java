@@ -99,11 +99,11 @@ public class Calculate {
 	
 	//A call to foil converts a binomial multiplication (ax + b)(cx + d) (inputted in the order of coefficients, then a string for the variable letter) into a quadratic equation (ax^2 + bx + c).
 	//It accepts four integers and a String and outputs a String.
-	public static String foil(int number1, int number2, int number3, int number4, String variableLetter) {
-		int coefficient1 = number1 * number3;
-		int coefficient2 = number1 * number4 + number2 * number3;
-		int coefficient3 = number2 * number4;
-		String answer = "" + coefficient1 + variableLetter + "^2 + " + coefficient2 + variableLetter + " + " + coefficient3;
+	public static String foil(int inputCoefficient1, int inputCoefficient2, int inputCoefficient3, int inputCoefficient4, String variableLetter) {
+		int outputCoefficient1 = inputCoefficient1 * inputCoefficient3;
+		int outputCoefficient2 = inputCoefficient1 * inputCoefficient4 + inputCoefficient2 * inputCoefficient3;
+		int outputCoefficient3 = inputCoefficient2 * inputCoefficient4;
+		String answer = "" + outputCoefficient1 + variableLetter + "^2 + " + outputCoefficient2 + variableLetter + " + " + outputCoefficient3;
 		return answer;		
 	}
 	
