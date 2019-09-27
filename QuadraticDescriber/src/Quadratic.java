@@ -75,7 +75,7 @@ public class Quadratic {
 			output+="Opens: Down\n";
 		}
 		double symmetry = -b/(2*a);
-		output += "Axis of Symmetry: "+symmetry + "\n";
+		output += "Axis of Symmetry: "+round2(symmetry) + "\n";
 		output += "Vertex: ("+round2(symmetry)+", "+round2((a*symmetry*symmetry+b*symmetry+c))+")" + "\n";
 		output += "x-intercept(s): "+ quadForm(a,b,c) + "\n";
 		output += "y-intercept: " + c + "\n";
