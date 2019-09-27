@@ -8,19 +8,6 @@ public class Quadratic {
 		return answer;
 	}
 	
-	//A call to isDivisibleBy determines whether or not one integer is divisible by another
-	//It accepts two integers and returns a boolean.
-	public static boolean isDivisibleBy(int largerNumber, int smallerNumber) {
-		if (smallerNumber == 0) {
-			throw new IllegalArgumentException("dividing by zero is undefined");
-		}
-		if (largerNumber%smallerNumber == 0) {
-			return true;
-		} else {
-			return false;
-		}
-	}
-	
 	//A call to absValue returns the absolute value of a number passed.
 	//It accepts and returns a double.
 	public static double absValue(double number1) {
@@ -28,33 +15,6 @@ public class Quadratic {
 			return number1;
 		} else {
 			return -number1;
-		}
-	}
-	
-	//A call to max returns the larger of the two values
-	//It accepts two doubles and returns a double.
-	public static double max(double number1, double number2) {
-		if (number1 >= number2) {
-			return number1;
-		} else {
-			return number2;
-		}
-	}
-	
-	//A call to max returns the larger of the three values
-	//It accepts three doubles and returns a double.
-	public static double max(double number1, double number2, double number3) {
-		double answer = max(number1, max(number2, number3));
-		return answer;
-	}
-	
-	//A call to min returns the smaller of the two values
-	//It accepts two doubles and returns a double.
-	public static double min(double number1, double number2) {
-		if (number1 <= number2) {
-			return number1;
-		} else {
-			return number2;
 		}
 	}
 	
@@ -79,7 +39,7 @@ public class Quadratic {
 			throw new IllegalArgumentException("no negative inputs allowed in sqrt");
 		}
 		double guess = 1;
-		while (absValue(radicand-guess*guess) > 0) {                  //repeat newton's algorithm until the difference is 0
+		while (absValue(radicand-guess*guess) > 0.0000001) {                  //repeat newton's algorithm until the difference is 0
 			guess = 0.5*(radicand/guess + guess);
 		}
 		guess = round2(guess);
@@ -97,25 +57,28 @@ public class Quadratic {
 		if (discriminant(a,b,c) > 0) {
 			root1 = (-b + sqrt(discriminant(a,b,c)) ) / (2*a);
 			root2 = (-b - sqrt(discriminant(a,b,c)) ) / (2*a);
-			return "" + root1 + " and " + root2;
+			return "" + round2(root1) + " and " + round2(root2);
 		}
 		if (discriminant(a,b,c) == 0) {
 			root1 = (-b + sqrt(discriminant(a,b,c)) ) / (2*a);
-			return "" + root1;
+			return "" + round2(root1);
 		}
 		return "placeholder";
 	}
 	
 	public static String quadrDescriber (double a, double b, double c) {
-		System.out.println("Description of the graph of:\ny = "+a+" x^2 + "+b+" x + "+c+"\n");
-		if (a<0) {
-			System.out.println("Opens: Up");
+		String output = "";
+		output += "Description of the graph of:\ny = "+a+" x^2 + "+b+" x + "+c+"\n\n";
+		if (a>=0) {
+			output+="Opens: Up\n";
 		} else {
-			System.out.println("Opens: Down");
+			output+="Opens: Down\n";
 		}
 		double symmetry = -b/(2*a);
-		System.out.println("Axis of Symmetry: "+symmetry);
-		System.out.println("Vertex: ("+symmetry+", "+(a*symmetry*symmetry+b*symmetry+c)+")");
-		System.out.println("x-intercept(s): "+ quadForm(a,b,c));
+		output += "Axis of Symmetry: "+symmetry + "\n";
+		output += "Vertex: ("+round2(symmetry)+", "+round2((a*symmetry*symmetry+b*symmetry+c))+")" + "\n";
+		output += "x-intercept(s): "+ quadForm(a,b,c) + "\n";
+		output += "y-intercept: " + c + "\n";
+		return output;
 	}
 }

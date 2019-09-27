@@ -258,7 +258,7 @@ public class Calculate {
 			throw new IllegalArgumentException("no negative inputs allowed in sqrt");
 		}
 		double guess = 1;
-		while (absValue(radicand-guess*guess) > 0) {                  //repeat newton's algorithm until the difference is 0
+		while (absValue(radicand-guess*guess) > 0.00000000001) {                  //repeat newton's algorithm until the difference is close to 0
 			guess = 0.5*(radicand/guess + guess);
 		}
 		guess = round2(guess);
@@ -284,11 +284,11 @@ public class Calculate {
 		if (discriminant(a,b,c) > 0) {
 			root1 = (-b + sqrt(discriminant(a,b,c)) ) / (2*a);
 			root2 = (-b - sqrt(discriminant(a,b,c)) ) / (2*a);
-			return "" + root1 + " and " + root2;
+			return "" + round2(root1) + " and " + round2(root2);
 		}
 		if (discriminant(a,b,c) == 0) {
 			root1 = (-b + sqrt(discriminant(a,b,c)) ) / (2*a);
-			return "" + root1;
+			return "" + round2(root1);
 		}
 		return "placeholder";
 	}

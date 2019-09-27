@@ -18,7 +18,7 @@ public class QuadraticClient {
 			String output = Quadratic.quadrDescriber(a, b, c);
 			System.out.println(output);
 			System.out.println("\nDo you want to keep going? (Type \"quit\" to end)");
-			test = input.nextLine();
+			test = input.next();
 		} while (!test.toUpperCase().equals("QUIT"));
 	}
 
