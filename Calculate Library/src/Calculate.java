@@ -284,7 +284,7 @@ public class Calculate {
 		if (discriminant(a,b,c) > 0) {
 			root1 = (-b + sqrt(discriminant(a,b,c)) ) / (2*a);
 			root2 = (-b - sqrt(discriminant(a,b,c)) ) / (2*a);
-			return "" + round2(root1) + " and " + round2(root2);
+			return "" + round2(min(root1, root2)) + " and " + round2(max(root2, root1));
 		}
 		if (discriminant(a,b,c) == 0) {
 			root1 = (-b + sqrt(discriminant(a,b,c)) ) / (2*a);
