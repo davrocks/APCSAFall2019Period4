@@ -63,10 +63,10 @@ public class Hourglass {
 			backslash();
 			enter();
 		}
-		input.close();
 		line(1);
 		quote(size);
 		line(1);
+		input.close();
 
 	}
 
