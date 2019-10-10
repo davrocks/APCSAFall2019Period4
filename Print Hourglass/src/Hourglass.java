@@ -54,7 +54,7 @@ public class Hourglass {
 			enter();
 		}
 		space(size/2);
-		line(size - 2*(size/2-1));
+		line(size - 2*(size/2-1)); //the number of lines is equal to the number of colons on the previous row
 		enter();
 		for (int line = size/2 - 1; line >=1; line--) {
 			space(line);
