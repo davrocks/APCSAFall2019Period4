@@ -171,6 +171,16 @@ public class Calculate {
 		}
 	}
 	
+	//A call to min returns the smaller of the two values
+	//It accepts two ints and returns an int
+	public static int min(int number1, int number2) {
+		if (number1 <= number2) {
+			return number1;
+		} else {
+			return number2;
+		}
+	}
+	
 	//A call to round2 rounds a double to 2 decimal places
 	//It accepts a double and returns a double
 	public static double round2(double number1) {
@@ -196,8 +206,8 @@ public class Calculate {
 	//A call to exponent raises the value to a positive integer power
 	//It accepts a double and an integer and returns a double.
 	public static double exponent(double base, int power) {
-		if (power < 0) {
-			throw new IllegalArgumentException("no negative powers allowed");
+		if (power < 0 || (power == 0 && base == 0)) {
+			throw new IllegalArgumentException("no negative powers allowed, and no zero to the zero power :)");
 		}
 		double answer = 1;                      //initialize to 1
 		for (int i=0; i<power; i++) {           //increase the number of multiplications until it reaches the proper number
