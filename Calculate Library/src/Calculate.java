@@ -260,7 +260,7 @@ public class Calculate {
 		}
 		if (number1==0) {
 			answer = number2;
-		} else if (number2 ==0) {
+		} else if (number2 == 0) {
 			answer = number1;
 		}
 		return answer;
