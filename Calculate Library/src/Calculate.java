@@ -239,14 +239,19 @@ public class Calculate {
 	//A call to gcf finds the greatest common factor of two positive integers.
 	//It accepts two positive integers and returns an integer.
 	public static int gcf(int number1, int number2) {
-		if (number1 == 0 || number2 == 0) {
-			throw new IllegalArgumentException("no inputs of zero allowed");
-		}
 		int answer = 1;
+		if (number1 == 0 && number2 ==0) {
+			throw new IllegalArgumentException("gcf is undefined for 0 and 0");
+		}
 		for (int i = 1; i <= absValue(min(number1, number2)); i++) {                 //find divisors, and keep running the loop until the highest divisor has been found
 			if (isDivisibleBy(number1, i) == true && isDivisibleBy(number2, i) == true) {
 				answer = i;
 			}
+		}
+		if (number1==0) {
+			answer = number2;
+		} else if (number2 ==0) {
+			answer = number1;
 		}
 		return answer;
 	}
