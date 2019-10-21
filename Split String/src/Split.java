@@ -30,8 +30,11 @@ public class Split {
 
 //What happens if you "I reallyreally likeapples".split("really") ?
   	System.out.println(Arrays.toString("I like apples!".split(" ")));
-	 
-
+  	System.out.println(Arrays.toString("I really like really red apples!".split("really")));
+  	System.out.println(Arrays.toString("I really like really red apples!".split(" really ")));
+  	System.out.println(Arrays.toString("really I really like really red apples!".split("really")));
+    System.out.println(part1("breadmayobread"));
+ }
 //Your task Part 1:
 
 /*Write a method that take in a string like
@@ -47,7 +50,13 @@ public class Split {
 * What if it's a fancy sandwich with multiple pieces of bread?
 
 */
-
+public static String part1(String sandwich) {
+	sandwich = sandwich.substring(sandwich.indexOf("bread"));
+	String[] outputArray = sandwich.split("bread");
+	return Arrays.toString(outputArray);
+}
+ 
+ 
 //Your task pt 2:
 
 /*Write a method that take in a string like
@@ -64,7 +73,6 @@ public class Split {
 
 */
 
- }
 
 }
 
