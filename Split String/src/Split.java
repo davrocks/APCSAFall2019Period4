@@ -29,11 +29,11 @@ public class Split {
 //play around with String.split!
 
 //What happens if you "I reallyreally likeapples".split("really") ?
-  	System.out.println(Arrays.toString("I like apples!".split("really")));
+  	System.out.println(Arrays.toString("Ireallyreallylikeapples".split("really")));
   	System.out.println(Arrays.toString("I really like really red apples!".split("really")));
   	System.out.println(Arrays.toString("I really like really red apples!".split(" really ")));
   	System.out.println(Arrays.toString("really I really like really red apples!".split("really")));
-    System.out.println(part1("breadmayobread"));
+    System.out.println(part1("breadmayotomatobreadbread"));
  }
 //Your task Part 1:
 
@@ -52,7 +52,18 @@ public class Split {
 */
 public static String part1(String sandwich) {
 	String[] splitArray = sandwich.split("bread");	
-	sandwich = sandwich.substring()
+	String outputString = "";
+	int counter = 0;
+	while (sandwich.indexOf("bread") != -1) {
+		counter++;
+		sandwich = sandwich.substring(sandwich.indexOf("bread")+5);
+		if(sandwich.indexOf("bread") != -1) {
+			outputString+= splitArray[counter];
+		}
+	}
+	if (counter!=0) {
+		return outputString;
+	}
 	return "Oops, looks like your input isn't a sandwich!!!";
 }
  
