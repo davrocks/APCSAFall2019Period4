@@ -2,7 +2,7 @@
 public class ArraysLab3 {
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
+		
 
 	}
 //	1) Write a method sum that accepts two arrays of integers arr1 and arr2 and returns an array of integers, in which every element is the sum of the elements at that index for the arrays arr1 and arr2. You can assume arrays arr1 and arr2 have at least one element each and are the same length.

@@ -33,7 +33,7 @@ public class Split {
   	System.out.println(Arrays.toString("I really like really red apples!".split("really")));
   	System.out.println(Arrays.toString("I really like really red apples!".split(" really ")));
   	System.out.println(Arrays.toString("really I really like really red apples!".split("really")));
-    System.out.println(part1("breadmayotomatobreadbreadt"));
+    System.out.println(part1("breadmayotomatobreadbread"));
  }
 //Your task Part 1:
 
