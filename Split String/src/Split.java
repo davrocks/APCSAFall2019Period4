@@ -52,6 +52,7 @@ public class Split {
 */
 public static String part1(String sandwich) {
 	String[] splitArray = sandwich.split("bread");	
+	System.out.println(splitArray.length);
 	String outputString = "";
 	int counter = 0;
 	System.out.println(splitArray.length);
