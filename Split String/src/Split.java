@@ -34,7 +34,7 @@ public class Split {
   	System.out.println(Arrays.toString("I really like really red apples!".split(" really ")));
   	System.out.println(Arrays.toString("really I really like really red apples!".split("really")));
     System.out.println(part1("breadmayotomatobreadbread"));
-    System.out.println(part1("breadmayo"));
+    System.out.println(part1("mayobreadham"));
     System.out.println(part1("mayo"));
     System.out.println(part1("breadbread"));
     System.out.println(part1("breadtomatobread"));
@@ -89,7 +89,11 @@ public static String part1(String sandwich) {
 * Again, what if it's a fancy sandwich with multiple pieces of bread?
 
 */
-
+//public static String part2(String sandwich) {
+//	String output = "";
+//	String[] splitArray = sandwich.split(" ");
+//	for(int i = 1; i<splitArray.length; )
+//}
 
 }
 
