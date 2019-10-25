@@ -46,7 +46,7 @@ public class Hourglass {
 		quote(size);
 		line(1);
 		enter();
-		for (int line = 1; line <= size/2 -1; line++) {
+		for (int line = 1; line <= (size-1)/2; line++) {
 			space(line);
 			backslash();
 			colon(size, line);

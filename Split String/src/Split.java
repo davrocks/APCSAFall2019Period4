@@ -34,6 +34,11 @@ public class Split {
   	System.out.println(Arrays.toString("I really like really red apples!".split(" really ")));
   	System.out.println(Arrays.toString("really I really like really red apples!".split("really")));
     System.out.println(part1("breadmayotomatobreadbread"));
+    System.out.println(part1("breadmayo"));
+    System.out.println(part1("mayo"));
+    System.out.println(part1("breadbread"));
+    System.out.println(part1("breadtomatobread"));
+    System.out.println(part1("breadmayotomatobreadbreadtomato"));
  }
 //Your task Part 1:
 
@@ -55,11 +60,10 @@ public static String part1(String sandwich) {
 	System.out.println(splitArray.length);
 	String outputString = "";
 	int counter = 0;
-	System.out.println(splitArray.length);
 	while (sandwich.indexOf("bread") != -1 && counter + 1 < splitArray.length) {
-		counter++;
 		sandwich = sandwich.substring(sandwich.indexOf("bread")+5);
 		if(sandwich.indexOf("bread") != -1) {
+			counter++;
 			outputString+= splitArray[counter];
 		}
 	}
