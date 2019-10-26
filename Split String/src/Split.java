@@ -39,6 +39,7 @@ public class Split {
     System.out.println(part1("breadbread"));
     System.out.println(part1("breadtomatobread"));
     System.out.println(part1("breadmayotomatobreadbreadtomato"));
+    System.out.println(part2("apples pineapples bread lettuce tomato bacon mayo ham bread cheese"));
  }
 //Your task Part 1:
 
@@ -89,11 +90,14 @@ public static String part1(String sandwich) {
 * Again, what if it's a fancy sandwich with multiple pieces of bread?
 
 */
-//public static String part2(String sandwich) {
-//	String output = "";
-//	String[] splitArray = sandwich.split(" ");
-//	for(int i = 1; i<splitArray.length; )
-//}
+public static String part2(String sandwich) {
+	String output = "";
+	String[] splitArray2 = sandwich.split(" ");
+	for(int i = 1; i<splitArray2.length; i++) {
+		output+= splitArray2[i];
+	}
+	return part1(output);
+}
 
 }
 
