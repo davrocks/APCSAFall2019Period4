@@ -39,7 +39,7 @@ public class Split {
     System.out.println(part1("breadbread"));
     System.out.println(part1("breadtomatobread"));
     System.out.println(part1("breadmayotomatobreadbreadtomato"));
-    System.out.println(part2("apples pineapples bread lettuce tomato bacon mayo ham bread cheese"));
+    System.out.println(part2("apples pineapples bread lettuce tomato bacon mayo ham bread cheese bread bread"));
  }
 //Your task Part 1:
 
@@ -57,21 +57,20 @@ public class Split {
 
 */
 public static String part1(String sandwich) {
-	String[] splitArray = sandwich.split("bread");	
-	System.out.println(splitArray.length);
-	String outputString = "";
-	int counter = 0;
-	while (sandwich.indexOf("bread") != -1 && counter + 1 < splitArray.length) {
-		sandwich = sandwich.substring(sandwich.indexOf("bread")+5);
-		if(sandwich.indexOf("bread") != -1) {
-			counter++;
-			outputString+= splitArray[counter];
+	String[] splitArray = sandwich.split("bread");	//splits sandwich at bread
+	String outputString = "";						//initializes output to be a blank string
+	int counter = 0;								//counter to be used for array index
+	while (sandwich.indexOf("bread") != -1 && counter + 1 < splitArray.length) {  //tests if a bread exists in sandwich & if the counter for index is less than length 
+		sandwich = sandwich.substring(sandwich.indexOf("bread")+5);	//makes sandwich equal a substring for everything past the first bread
+		if(sandwich.indexOf("bread") != -1) {	//tests if a bread exists (in this new substring)
+			counter++;							//moves the counter up one, so the index is one more
+			outputString+= splitArray[counter]; //use counter as the array index, and add that element to output
 		}
 	}
-	if (counter!=0) {
+	if (counter!=0) {  //if the while loop triggered, output the outputString
 		return outputString;
 	}
-	return "Oops, looks like your input isn't a sandwich!!!";
+	return "Oops, looks like your input isn't a sandwich!!!"; //if while loop did not trigger, it is not a sandwich.
 }
  
  
