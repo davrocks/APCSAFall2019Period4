@@ -29,7 +29,7 @@ public class Split {
 //play around with String.split!
 
 //What happens if you "I reallyreally likeapples".split("really") ?
-  	System.out.println(Arrays.toString("Ireallyreallylikeapples".split("really")));
+  	System.out.println(Arrays.toString("I like apples!".split(" ")));
   	System.out.println(Arrays.toString("I really like really red apples!".split("really")));
   	System.out.println(Arrays.toString("I really like really red apples!".split(" really ")));
   	System.out.println(Arrays.toString("really I really like really red apples!".split("really")));
@@ -39,7 +39,9 @@ public class Split {
     System.out.println(part1("breadbread"));
     System.out.println(part1("breadtomatobread"));
     System.out.println(part1("breadmayotomatobreadbreadtomato"));
-    System.out.println(part2("apples pineapples bread lettuce tomato bacon mayo ham bread cheese bread bread"));
+    System.out.println(part1("breadbreaid"));
+	 
+    System.out.println(part2("apples pineapples bread lettuce tomato bacon mayo ham bread cheese"));
  }
 //Your task Part 1:
 
