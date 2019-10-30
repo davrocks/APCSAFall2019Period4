@@ -5,6 +5,10 @@ public class ArraysLab3 {
 		int[] arr1 = {5,3,2};
 		int[] arr2 = {3,3,3};
 		System.out.println(Arrays.toString(sum(arr1,arr2)));
+		int[] arr3 = {2,3,5};
+		System.out.println(Arrays.toString(remove(arr3,1)));
+		int[] arr4 = {2,1,3,4,4};
+		System.out.println(sumEven(arr4));
 
 	}
 //	1) Write a method sum that accepts two arrays of integers arr1 and arr2 and returns an array of 
@@ -25,7 +29,12 @@ public class ArraysLab3 {
 //	num appended to the end.  You can assume array arr has at least one element.
 
 	public static int[] append(int[] arr, int num) {
-		
+		int[] outputArray = new int[arr.length+1];
+		for (int i = 0; i < arr.length; i++) {
+			outputArray[i] = arr[i];
+		}
+		outputArray[outputArray.length-1] = num;
+		return outputArray;
 	}
 
 //	3) Write a method remove that accepts an array of integers arr and an integer
@@ -34,7 +43,15 @@ public class ArraysLab3 {
 //	arr.length – 1).  You can assume arr has at least two elements.
 
 	public static int[] remove(int[] arr, int idx) {
-		
+		int[] outputArray = new int[arr.length-1];
+		for(int i = 0; i < arr.length; i++) {
+			if (i < idx) {
+				outputArray[i] = arr[i];
+			} else if (i>idx){
+				outputArray[i-1] = arr[i];
+			}
+		}
+		return outputArray;
 	}
 
 //	4) Write a method sumEven that accepts an array of integers arr and returns 
@@ -42,6 +59,11 @@ public class ArraysLab3 {
 //	(That means elements at indices 0,2,4,6,8.)  You can assume arr has at least one element.
 
 	public static int sumEven(int[] arr) {
+		int sum = 0;
+		for(int i = 0; i < (arr.length+1)/2; i++) {
+			sum += arr[i*2];
+		}
+		return sum;
 		
 	}
 
