@@ -9,6 +9,9 @@ public class ArraysLab3 {
 		System.out.println(Arrays.toString(remove(arr3,1)));
 		int[] arr4 = {2,1,3,4,4};
 		System.out.println(sumEven(arr4));
+		int[] arr5 = {2,1,3,4,4};
+		rotateRight(arr5);
+		System.out.println(Arrays.toString(arr5));
 
 	}
 //	1) Write a method sum that accepts two arrays of integers arr1 and arr2 and returns an array of 
@@ -64,7 +67,6 @@ public class ArraysLab3 {
 			sum += arr[i*2];
 		}
 		return sum;
-		
 	}
 
 
@@ -74,7 +76,10 @@ public class ArraysLab3 {
 //	2, …, element n-1 goes to element 0).  You can assume arr has at least one element.
 
 	public static void rotateRight(int[] arr) {
-		
+		for(int i = arr.length-2; i > 0; i--) {
+			arr[i] = arr[i-1];
+		}
+		arr[0] = arr[arr.length-1];
 	}
 
 //	6) Write a method main that will 
