@@ -100,10 +100,10 @@ public class ArraysLab3 {
 //	2, …, element n-1 goes to element 0).  You can assume arr has at least one element.
 
 	public static void rotateRight(int[] arr) {
-		int temp = arr[arr.length-1];
+		int last = arr[arr.length-1];
 		for(int i = arr.length-1; i > 0; i--) {
 			arr[i] = arr[i-1];
 		}
-		arr[0] = temp;
+		arr[0] = last;
 	}
 }
