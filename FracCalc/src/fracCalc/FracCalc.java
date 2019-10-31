@@ -1,10 +1,17 @@
+//Davin Singh
+//APCS1 4th Period Ms. Dreyer
+//fracCalc takes in an expression (of integers, mixed numbers, or improper fractions) and calculates it
+
 package fracCalc;
+import java.util.*;
 
 public class FracCalc {
 
     public static void main(String[] args) 
     {
-        // TODO: Read the input from the user and call produceAnswer with an equation
+        Scanner userInput = new Scanner(System.in);
+        System.out.print("Enter first expression:");
+        System.out.println(produceAnswer(userInput.nextLine()));
 
     }
     
