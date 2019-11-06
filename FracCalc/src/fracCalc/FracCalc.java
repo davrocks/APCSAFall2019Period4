@@ -30,12 +30,27 @@ public class FracCalc {
     public static String produceAnswer(String input)
     { 
     	String[] splitInput = input.split(" ");
-    	String[] operand1 = splitInput[0].split("_|/");
-    	String[] operand2 = splitInput[1].split("_|/");
-    	
+    	int[] operand1 = splitFrac(splitInput[0]);
+    	int[] operand2 = splitFrac(splitInput[2]);
         return Arrays.toString(operand1);
     }
 
-    // TODO: Fill in the space below with any helper methods that you think you will need
+    public static int[] splitFrac (String fracInput) {
+    	int[] output = {0,0,1};
+    	String[] input = fracInput.split("_");
+    	if (input[0].indexOf("/") != -1) {
+    		input = input[0].split("/");
+    		output[0] = Integer.parseInt(input[0]);
+    		output[1] = Integer.parseInt(input[1]);
+    		return output;
+    	}
+    	output[0] = Integer.parseInt(input[0]);
+		if (input.length == 2) {
+       		input = input[1].split("/");
+    		output[1] = Integer.parseInt(input[0]);
+    		output[2] = Integer.parseInt(input[1]);
+    	}
+    	return output;
+    }
     
 }
