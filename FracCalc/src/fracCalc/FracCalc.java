@@ -37,20 +37,36 @@ public class FracCalc {
 
     public static int[] splitFrac (String fracInput) {
     	int[] output = {0,0,1};
-    	String[] input = fracInput.split("_");
-    	if (input[0].indexOf("/") != -1) {
-    		input = input[0].split("/");
-    		output[0] = Integer.parseInt(input[0]);
-    		output[1] = Integer.parseInt(input[1]);
+    	String[] inputArray = fracInput.split("_");
+    	if (inputArray[0].indexOf("/") != -1) {
+    		inputArray = inputArray[0].split("/");
+    		output[1] = Integer.parseInt(inputArray[0]);
+    		output[2] = Integer.parseInt(inputArray[1]);
     		return output;
     	}
-    	output[0] = Integer.parseInt(input[0]);
-		if (input.length == 2) {
-       		input = input[1].split("/");
-    		output[1] = Integer.parseInt(input[0]);
-    		output[2] = Integer.parseInt(input[1]);
+    	output[0] = Integer.parseInt(inputArray[0]);
+		if (inputArray.length == 2) {
+       		inputArray = inputArray[1].split("/");
+    		output[1] = Integer.parseInt(inputArray[0]);
+    		output[2] = Integer.parseInt(inputArray[1]);
     	}
     	return output;
     }
-    
+    public static int[] splitFrac (String fracInput) {
+    	int[] output = {0,0,1};
+    	if (fracInput.indexOf("/") != -1) {
+    		String[] inputArray = fracInput.split("/");
+    		output[2] = Integer.parseInt(inputArray[1]);
+    		if (inputArray[0].indexOf("_") != -1) {
+        		String[] underscore = inputArray[0].split("_");
+        		output[0] = Integer.parseInt(underscore[0]);
+        		output[1] = Integer.parseInt(underscore[1]);
+        	} else {
+        		output[1] = Integer.parseInt(inputArray[0]);
+        	}
+    	} else {
+    		output[0] = Integer.parseInt(fracInput);
+    	}
+    	return output;
+    }
 }
