@@ -37,19 +37,26 @@ public class FracCalc {
 
     public static int[] splitFrac (String fracInput) {
     	int[] output = {0,0,1};
-    	String[] inputArray = fracInput.split("_");        //splits at underscore
-    	if (inputArray[0].indexOf("/") != -1) {            //tests if the input is just a fraction w/o whole number
-    		inputArray = inputArray[0].split("/");
-    		output[1] = Integer.parseInt(inputArray[0]);
-    		output[2] = Integer.parseInt(inputArray[1]);
+    	String[] inputArr = fracInput.split("_");        //splits at underscore
+    	if (inputArr[0].indexOf("/") != -1) {            //tests if the input is just a fraction w/o whole number
+    		inputArr = inputArr[0].split("/");
+    		output[1] = Integer.parseInt(inputArr[0]);
+    		output[2] = Integer.parseInt(inputArr[1]);
     		return output;                                 //if it is just fraction w/o whole number, return output
     	}
-    	output[0] = Integer.parseInt(inputArray[0]);       //copy whole number to the output
-		if (inputArray.length == 2) {                      //if there is also a fraction, copy it to the output
-       		inputArray = inputArray[1].split("/");
-    		output[1] = Integer.parseInt(inputArray[0]);
-    		output[2] = Integer.parseInt(inputArray[1]);
+    	output[0] = Integer.parseInt(inputArr[0]);       //copy whole number to the output
+		if (inputArr.length == 2) {                      //if there is also a fraction, copy it to the output
+       		inputArr = inputArr[1].split("/");
+    		output[1] = Integer.parseInt(inputArr[0]);
+    		output[2] = Integer.parseInt(inputArr[1]);
     	}
     	return output;
+    }
+    public static void toImproperFrac (int[] inputArr) {
+    	inputArr[1] = inputArr[2]*inputArr[0] + inputArr[1];
+    	inputArr[0] = 0;
+    }
+    public static void commonDenom (int[] inputArr1, int[] inputArr2) {
+    	
     }
 }
