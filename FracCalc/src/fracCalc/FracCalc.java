@@ -32,40 +32,23 @@ public class FracCalc {
     	String[] splitInput = input.split(" ");
     	int[] operand1 = splitFrac(splitInput[0]);
     	int[] operand2 = splitFrac(splitInput[2]);
-        return Arrays.toString(operand1);
+        return "whole:" + operand2[0] + " numerator:" + operand2[1] + " denominator:" + operand2[2];
     }
 
     public static int[] splitFrac (String fracInput) {
     	int[] output = {0,0,1};
-    	String[] inputArray = fracInput.split("_");
-    	if (inputArray[0].indexOf("/") != -1) {
+    	String[] inputArray = fracInput.split("_");        //splits at underscore
+    	if (inputArray[0].indexOf("/") != -1) {            //tests if the input is just a fraction w/o whole number
     		inputArray = inputArray[0].split("/");
     		output[1] = Integer.parseInt(inputArray[0]);
     		output[2] = Integer.parseInt(inputArray[1]);
-    		return output;
+    		return output;                                 //if it is just fraction w/o whole number, return output
     	}
-    	output[0] = Integer.parseInt(inputArray[0]);
-		if (inputArray.length == 2) {
+    	output[0] = Integer.parseInt(inputArray[0]);       //copy whole number to the output
+		if (inputArray.length == 2) {                      //if there is also a fraction, copy it to the output
        		inputArray = inputArray[1].split("/");
     		output[1] = Integer.parseInt(inputArray[0]);
     		output[2] = Integer.parseInt(inputArray[1]);
-    	}
-    	return output;
-    }
-    public static int[] splitFrac (String fracInput) {
-    	int[] output = {0,0,1};
-    	if (fracInput.indexOf("/") != -1) {
-    		String[] inputArray = fracInput.split("/");
-    		output[2] = Integer.parseInt(inputArray[1]);
-    		if (inputArray[0].indexOf("_") != -1) {
-        		String[] underscore = inputArray[0].split("_");
-        		output[0] = Integer.parseInt(underscore[0]);
-        		output[1] = Integer.parseInt(underscore[1]);
-        	} else {
-        		output[1] = Integer.parseInt(inputArray[0]);
-        	}
-    	} else {
-    		output[0] = Integer.parseInt(fracInput);
     	}
     	return output;
     }
