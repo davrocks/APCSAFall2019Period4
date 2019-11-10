@@ -7,9 +7,8 @@ import java.util.*;
 
 public class FracCalc {
 
-    public static void main(String[] args) 
-    {
-        Scanner userInput = new Scanner(System.in);
+    public static void main(String[] args) {
+    	Scanner userInput = new Scanner(System.in);
         String test = "don't quit";
         while (!test.equals("quit")) {
         	System.out.print("Enter expression:");
@@ -17,6 +16,7 @@ public class FracCalc {
         	System.out.print("Do you want to quit?");
         	test = userInput.nextLine();
         }
+        userInput.close();
     }
     
     // ** IMPORTANT ** DO NOT DELETE THIS FUNCTION.  This function will be used to test your code
@@ -37,13 +37,11 @@ public class FracCalc {
     	toImproperFrac(operand2);
     	if (splitInput[1].equals("+") || splitInput[1].equals("-")) {
     		commonDenom(operand1, operand2);
-        	if (splitInput[1].equals("+")) {
-        		outputArr[1] = operand1[1] + operand2[1];
-            	outputArr[2] = operand1[2];
-        	} else {
-        		outputArr[1] = operand1[1] - operand2[1];
-            	outputArr[2] = operand1[2];
+        	if (splitInput[1].equals("-")) {
+        		operand2[1] *= -1;
         	}
+        	outputArr[1] = operand1[1] + operand2[1];
+            outputArr[2] = operand1[2];
     	}
     	if (splitInput[1].equals("*")) {
     		outputArr[1] = operand1[1]*operand2[1];
@@ -52,11 +50,14 @@ public class FracCalc {
     	if (splitInput[1].equals("/")) {
     		outputArr[1] = operand1[1]*operand2[2];
         	outputArr[2] = operand1[2]*operand2[1];
+        	if (outputArr[2] < 0) {
+        			outputArr[2] *= -1;
+        			outputArr[1] *= -1;
+        	}
     	}
     	toMixedNum(outputArr);
     	reduce(outputArr);
-        return Arrays.toString(outputArr);
-        
+        return construct(outputArr);
     }
 
     public static int[] splitFrac (String fracInput) {
@@ -76,10 +77,16 @@ public class FracCalc {
     	}
     	return output;
     }
+    
     public static void toImproperFrac (int[] inputArr) {
-    	inputArr[1] = inputArr[2]*inputArr[0] + inputArr[1];
+    	int temp = inputArr[0];
+    	inputArr[1] = inputArr[2]*Math.abs(inputArr[0]) + inputArr[1];
+    	if (temp < 0) {
+    		inputArr[1] *= -1;
+    	}
     	inputArr[0] = 0;
     }
+    
     public static void commonDenom (int[] inputArr1, int[] inputArr2) {
     	int temp = inputArr1[2];
     	inputArr1[1] *= inputArr2[2];
@@ -87,12 +94,40 @@ public class FracCalc {
     	inputArr2[1] *= temp;
     	inputArr2[2] *= temp;
     }
+    
     public static void toMixedNum (int[] inputArr) {
     	inputArr[0] = inputArr[1]/inputArr[2];
+    	if (inputArr[0] < 0 ) {
+    		inputArr[1] *= -1;
+    	}
     	inputArr[1] = inputArr[1] % inputArr[2];
     }
+    
     public static void reduce (int[] inputArr) {
-    	for (int i = )
+    	int num1 = Math.abs(inputArr[1]);
+    	int num2 = Math.abs(inputArr[2]);
+    	int temp = num2;
+    	while (num2 != 0) {                //finds greatest common denominator with Euclid's algorithm
+    		temp = num2;
+    		num2 = num1 % num2;
+    		num1 = temp;
+    	}
+    	inputArr[1] /= num1;
+    	inputArr[2] /= num1;
     }
     
+    public static String construct (int[] inputArr) {
+        String outputStr = "";
+        if (inputArr[0] != 0) {
+        	outputStr += inputArr[0];
+        	if(inputArr[1] != 0) {
+            	outputStr += "_" + inputArr[1] + "/" + inputArr[2];
+            }
+        }else if (inputArr[1] != 0) {
+        	outputStr += inputArr[1] + "/" + inputArr[2];
+        }else {
+        	outputStr += 0;
+        }
+        return outputStr;
+    }
 }
