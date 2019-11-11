@@ -27,33 +27,40 @@ public class FracCalc {
     //        
     // The function should return the result of the fraction after it has been calculated
     //      e.g. return ==> "1_1/4"
-    public static String produceAnswer(String input)
-    { 
+    public static String produceAnswer(String input) { 
     	String[] splitInput = input.split(" ");
-    	int[] operand1 = splitFrac(splitInput[0]);
-    	int[] operand2 = splitFrac(splitInput[2]);
+    	
+    	int[][] operands = new int[(splitInput.length+1)/2][3];
+    	for (int i = 0; i < operands.length; i++) {
+    		operands[i] = splitFrac(splitInput[i*2]);
+    	}
+    	
     	int[] outputArr = {0,0,1};
-    	toImproperFrac(operand1);
-    	toImproperFrac(operand2);
-    	if (splitInput[1].equals("+") || splitInput[1].equals("-")) {
-    		commonDenom(operand1, operand2);
-        	if (splitInput[1].equals("-")) {
-        		operand2[1] *= -1;
-        	}
-        	outputArr[1] = operand1[1] + operand2[1];
-            outputArr[2] = operand1[2];
-    	}
-    	if (splitInput[1].equals("*")) {
-    		outputArr[1] = operand1[1]*operand2[1];
-        	outputArr[2] = operand1[2]*operand2[2];
-    	}
-    	if (splitInput[1].equals("/")) {
-    		outputArr[1] = operand1[1]*operand2[2];
-        	outputArr[2] = operand1[2]*operand2[1];
-        	if (outputArr[2] < 0) {
-        			outputArr[2] *= -1;
-        			outputArr[1] *= -1;
-        	}
+    	toImproperFrac(operands);
+    	int[] tempArr = operands[0];
+
+    	for(int i = 0; i < operands.length-1; i++) {
+    		if (splitInput[2*i+1].equals("+") || splitInput[2*i+1].equals("-")) {
+    			commonDenom(tempArr, operands[i+1]);
+    			if (splitInput[2*i+1].equals("-")) {
+    				operands[i+1][1] *= -1;
+    			}
+    			outputArr[1] = tempArr[1] + operands[i+1][1];
+    			outputArr[2] = tempArr[2];
+    		}
+    		if (splitInput[2*i+1].equals("*")) {
+    			outputArr[1] = tempArr[1]*operands[i+1][1];
+    			outputArr[2] = tempArr[2]*operands[i+1][2];
+    		}
+    		if (splitInput[2*i+1].equals("/")) {
+    			outputArr[1] = tempArr[1]*operands[i+1][2];
+    			outputArr[2] = tempArr[2]*operands[i+1][1];
+    			if (outputArr[2] < 0) {
+    				outputArr[2] *= -1;
+    				outputArr[1] *= -1;
+    			}
+    		}
+    		tempArr = outputArr;
     	}
     	toMixedNum(outputArr);
     	reduce(outputArr);
@@ -78,13 +85,15 @@ public class FracCalc {
     	return output;
     }
     
-    public static void toImproperFrac (int[] inputArr) {
-    	int temp = inputArr[0];
-    	inputArr[1] = inputArr[2]*Math.abs(inputArr[0]) + inputArr[1];
-    	if (temp < 0) {
-    		inputArr[1] *= -1;
+    public static void toImproperFrac (int[][] inputArr) {
+    	for(int i = 0; i<inputArr.length; i++) {
+    		int temp = inputArr[i][0];
+    		inputArr[i][1] = inputArr[i][2]*Math.abs(inputArr[i][0]) + inputArr[i][1];
+    		if (temp < 0) {
+    			inputArr[i][1] *= -1;
+    		}
+    		inputArr[i][0] = 0;
     	}
-    	inputArr[0] = 0;
     }
     
     public static void commonDenom (int[] inputArr1, int[] inputArr2) {
