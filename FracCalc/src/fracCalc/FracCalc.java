@@ -35,10 +35,10 @@ public class FracCalc {
     		operands[i] = splitFrac(splitInput[i*2]);
     	}
     	
-    	int[] outputArr = {0,0,1};
     	toImproperFrac(operands);
     	int[] tempArr = operands[0];
-
+    	int[] outputArr = {0,0,1};
+    	
     	for(int i = 0; i < operands.length-1; i++) {
     		if (splitInput[2*i+1].equals("+") || splitInput[2*i+1].equals("-")) {
     			commonDenom(tempArr, operands[i+1]);
@@ -121,7 +121,7 @@ public class FracCalc {
     		num2 = num1 % num2;
     		num1 = temp;
     	}
-    	inputArr[1] /= num1;
+    	inputArr[1] /= num1; 			   //divides out the common denominator from top & bottom
     	inputArr[2] /= num1;
     }
     
