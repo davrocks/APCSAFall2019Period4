@@ -19,14 +19,6 @@ public class FracCalc {
         userInput.close();
     }
     
-    // ** IMPORTANT ** DO NOT DELETE THIS FUNCTION.  This function will be used to test your code
-    // This function takes a String 'input' and produces the result
-    //
-    // input is a fraction string that needs to be evaluated.  For your program, this will be the user input.
-    //      e.g. input ==> "1/2 + 3/4"
-    //        
-    // The function should return the result of the fraction after it has been calculated
-    //      e.g. return ==> "1_1/4"
     public static String produceAnswer(String input) { 
     	String[] splitInput = input.split(" ");
     	
@@ -40,25 +32,17 @@ public class FracCalc {
     	int[] outputArr = {0,0,1};
     	
     	for(int i = 0; i < operands.length-1; i++) {
-    		if (splitInput[2*i+1].equals("+") || splitInput[2*i+1].equals("-")) {
-    			commonDenom(tempArr, operands[i+1]);
-    			if (splitInput[2*i+1].equals("-")) {
-    				operands[i+1][1] *= -1;
-    			}
-    			outputArr[1] = tempArr[1] + operands[i+1][1];
-    			outputArr[2] = tempArr[2];
+    		if (splitInput[2*i+1].equals("+")) {
+    			add(tempArr, operands[i+1], outputArr);
+    		}
+    		if (splitInput[2*i+1].equals("-")) {
+    			subtract(tempArr, operands[i+1], outputArr);
     		}
     		if (splitInput[2*i+1].equals("*")) {
-    			outputArr[1] = tempArr[1]*operands[i+1][1];
-    			outputArr[2] = tempArr[2]*operands[i+1][2];
+    			multiply(tempArr,operands[i+1],outputArr);
     		}
     		if (splitInput[2*i+1].equals("/")) {
-    			outputArr[1] = tempArr[1]*operands[i+1][2];
-    			outputArr[2] = tempArr[2]*operands[i+1][1];
-    			if (outputArr[2] < 0) {
-    				outputArr[2] *= -1;
-    				outputArr[1] *= -1;
-    			}
+    			divide(tempArr,operands[i+1],outputArr);
     		}
     		tempArr = outputArr;
     	}
@@ -138,5 +122,26 @@ public class FracCalc {
         	outputStr += 0;
         }
         return outputStr;
+    }
+    public static void add (int[] inputArr1, int[] inputArr2, int[] outputArr) {
+    	commonDenom(inputArr1, inputArr2);
+		outputArr[1] = inputArr1[1] + inputArr2[1];
+		outputArr[2] = inputArr1[2];
+    }
+    public static void subtract (int[] inputArr1, int[] inputArr2, int[] outputArr) {
+    	inputArr2[1] *= -1;
+    	add(inputArr1,inputArr2,outputArr);
+    }
+    public static void multiply (int[] inputArr1, int[] inputArr2, int[] outputArr) {
+    	outputArr[1] = inputArr1[1]*inputArr2[1];
+		outputArr[2] = inputArr1[2]*inputArr2[2];
+    }
+    public static void divide (int[] inputArr1, int[] inputArr2, int[] outputArr) {
+		outputArr[1] = inputArr1[1]*inputArr2[2];
+		outputArr[2] = inputArr1[2]*inputArr2[1];
+		if (outputArr[2] < 0) {
+			outputArr[2] *= -1;
+			outputArr[1] *= -1;
+		}
     }
 }
