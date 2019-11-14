@@ -30,21 +30,22 @@ public class FracCalc {
     	toImproperFrac(operands);
     	int[] tempArr = operands[0];
     	int[] outputArr = {0,0,1};
-    	
-    	for(int i = 0; i < operands.length-1; i++) {
-    		if (splitInput[2*i+1].equals("+")) {
-    			add(tempArr, operands[i+1], outputArr);
+    	for(int i = 1; i < splitInput.length/2; i++) {
+    		for(int j = 0; j < operands.length-1; j++) {
+    			if (splitInput[2*j+1].equals("+")) {
+    				add(tempArr, operands[j+1], outputArr);
+    			}
+    			if (splitInput[2*j+1].equals("-")) {
+    				subtract(tempArr, operands[j+1], outputArr);
+    			}
+    			if (splitInput[2*j+1].equals("*")) {
+    				multiply(tempArr,operands[j+1],outputArr);
+    			}
+    			if (splitInput[2*j+1].equals("/")) {
+    				divide(tempArr,operands[j+1],outputArr);
+    			}
+    			tempArr = outputArr;
     		}
-    		if (splitInput[2*i+1].equals("-")) {
-    			subtract(tempArr, operands[i+1], outputArr);
-    		}
-    		if (splitInput[2*i+1].equals("*")) {
-    			multiply(tempArr,operands[i+1],outputArr);
-    		}
-    		if (splitInput[2*i+1].equals("/")) {
-    			divide(tempArr,operands[i+1],outputArr);
-    		}
-    		tempArr = outputArr;
     	}
     	toMixedNum(outputArr);
     	reduce(outputArr);
@@ -78,6 +79,28 @@ public class FracCalc {
     		}
     		inputArr[i][0] = 0;
     	}
+    }
+    
+    public static void add (int[] inputArr1, int[] inputArr2, int[] outputArr) {
+    	commonDenom(inputArr1, inputArr2);
+		outputArr[1] = inputArr1[1] + inputArr2[1];
+		outputArr[2] = inputArr1[2];
+    }
+    public static void subtract (int[] inputArr1, int[] inputArr2, int[] outputArr) {
+    	inputArr2[1] *= -1;
+    	add(inputArr1,inputArr2,outputArr);
+    }
+    public static void multiply (int[] inputArr1, int[] inputArr2, int[] outputArr) {
+    	outputArr[1] = inputArr1[1]*inputArr2[1];
+		outputArr[2] = inputArr1[2]*inputArr2[2];
+    }
+    public static void divide (int[] inputArr1, int[] inputArr2, int[] outputArr) {
+		outputArr[1] = inputArr1[1]*inputArr2[2];
+		outputArr[2] = inputArr1[2]*inputArr2[1];
+		if (outputArr[2] < 0) {
+			outputArr[2] *= -1;
+			outputArr[1] *= -1;
+		}
     }
     
     public static void commonDenom (int[] inputArr1, int[] inputArr2) {
@@ -122,26 +145,5 @@ public class FracCalc {
         	outputStr += 0;
         }
         return outputStr;
-    }
-    public static void add (int[] inputArr1, int[] inputArr2, int[] outputArr) {
-    	commonDenom(inputArr1, inputArr2);
-		outputArr[1] = inputArr1[1] + inputArr2[1];
-		outputArr[2] = inputArr1[2];
-    }
-    public static void subtract (int[] inputArr1, int[] inputArr2, int[] outputArr) {
-    	inputArr2[1] *= -1;
-    	add(inputArr1,inputArr2,outputArr);
-    }
-    public static void multiply (int[] inputArr1, int[] inputArr2, int[] outputArr) {
-    	outputArr[1] = inputArr1[1]*inputArr2[1];
-		outputArr[2] = inputArr1[2]*inputArr2[2];
-    }
-    public static void divide (int[] inputArr1, int[] inputArr2, int[] outputArr) {
-		outputArr[1] = inputArr1[1]*inputArr2[2];
-		outputArr[2] = inputArr1[2]*inputArr2[1];
-		if (outputArr[2] < 0) {
-			outputArr[2] *= -1;
-			outputArr[1] *= -1;
-		}
     }
 }
