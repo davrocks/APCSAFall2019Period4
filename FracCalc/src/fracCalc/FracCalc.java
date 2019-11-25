@@ -30,21 +30,21 @@ public class FracCalc {
     	toImproperFrac(operands);
     	int[] tempArr = operands[0];
     	int[] outputArr = {0,0,1};
-    		for(int j = 0; j < operands.length-1; j++) {
-    			if (splitInput[2*j+1].equals("+")) {
-    				add(tempArr, operands[j+1], outputArr);
-    			}
-    			if (splitInput[2*j+1].equals("-")) {
-    				subtract(tempArr, operands[j+1], outputArr);
-    			}
-    			if (splitInput[2*j+1].equals("*")) {
-    				multiply(tempArr,operands[j+1],outputArr);
-    			}
-    			if (splitInput[2*j+1].equals("/")) {
-    				divide(tempArr,operands[j+1],outputArr);
-    			}
-    			tempArr = outputArr;
+    	for(int j = 0; j < operands.length-1; j++) {
+    		if (splitInput[2*j+1].equals("+")) {
+   				add(tempArr, operands[j+1], outputArr);
+   			}
+   			if (splitInput[2*j+1].equals("-")) {
+   				subtract(tempArr, operands[j+1], outputArr);
     		}
+    		if (splitInput[2*j+1].equals("*")) {
+   				multiply(tempArr,operands[j+1],outputArr);
+   			}
+   			if (splitInput[2*j+1].equals("/")) {
+   				divide(tempArr,operands[j+1],outputArr);
+    		}
+   			tempArr = outputArr;
+   		}
     	toMixedNum(outputArr);
     	reduce(outputArr);
         return construct(outputArr);
