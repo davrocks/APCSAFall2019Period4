@@ -19,6 +19,13 @@ public class ArrayListPracticeLab
 	 * an ArrayList containing those Strings
 	 */
 	
+	public static ArrayList<String> convertArrayToList (String[] inputArr) {
+		ArrayList<String> output = new ArrayList<String>();
+		for (String word : inputArr) {
+			output.add(word);
+		}
+		return output;
+	}
 	
 	
 	
