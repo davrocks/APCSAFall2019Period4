@@ -37,7 +37,7 @@ public class ArrayListPracticeLab
 	 * empty list, it should return 0.
 	 */
 	
-	
+	public static int
 	
 	
 	
