@@ -22,13 +22,13 @@ public class FracCalc {
     public static String produceAnswer(String input) { 
     	String[] splitInput = input.split(" ");
     	
-    	int[][] operands = new int[(splitInput.length+1)/2][3];
-    	for (int i = 0; i < operands.length; i++) {
+    	int[][] operands = new int[(splitInput.length+1)/2][3]; 
+    	for (int i = 0; i < operands.length; i++) {    //construct operands array (3 elements each: whole #, numerator, denominator)
     		operands[i] = splitFrac(splitInput[i*2]);
     	}
     	
     	toImproperFrac(operands);
-    	int[] tempArr = operands[0];
+    	int[] tempArr = operands[0]; //calculates first two operands, saves back to tempArr, continue until finished
     	int[] outputArr = {0,0,1};
     	for(int j = 0; j < operands.length-1; j++) {
     		if (splitInput[2*j+1].equals("+")) {
