@@ -1,3 +1,8 @@
+//Davin Singh
+//APCS A 4th period 12-5-19
+//ArrayList practice lab to make some methods that manipulate ArrayLists
+
+
 import java.util.ArrayList;
 
 public class ArrayListPracticeLab 
@@ -20,11 +25,11 @@ public class ArrayListPracticeLab
 	 */
 	
 	public static ArrayList<String> convertArrayToList (String[] inputArr) {
-		ArrayList<String> output = new ArrayList<String>();
+		ArrayList<String> outputList = new ArrayList<String>();
 		for (String word : inputArr) {
-			output.add(word);
+			outputList.add(word);
 		}
-		return output;
+		return outputList;
 	}
 	
 	
@@ -37,7 +42,15 @@ public class ArrayListPracticeLab
 	 * empty list, it should return 0.
 	 */
 	
-	public static int
+	public static int maxLength (ArrayList<String> inputList) {
+		int longest = 0;
+		for (String word : inputList) {
+			if (word.length()>longest) {
+				longest = word.length();
+			}
+		}
+		return longest;
+	}
 	
 	
 	
@@ -59,7 +72,17 @@ public class ArrayListPracticeLab
 	 *  The returned list should contain {"be", "to", "not", "or", "be", "to", "hamlet"}
 	 */
 	
-	
+	public static ArrayList<String> swapPairs (ArrayList<String> inputList) {
+		ArrayList<String> outputList = new ArrayList<String>();
+		for(int i = 0; i<inputList.size()/2; i++) {
+			outputList.add(inputList.get(2*i+1));
+			outputList.add(inputList.get(2*i));
+		}
+		if (inputList.size()%2 != 0) {
+			outputList.add(inputList.get(inputList.size()-1));
+		}
+		return outputList;
+	}
 	
 	
 	
@@ -73,7 +96,15 @@ public class ArrayListPracticeLab
 	 * removeEvenLength should not change the input ArrayList.
 	 */
 	
-	
+	public static ArrayList<String> removeEvenLength (ArrayList<String> inputList) {
+		ArrayList<String> outputList = new ArrayList<String>();
+		for(String word : inputList) {
+			if(word.length()%2 != 0) {
+				outputList.add(word);
+			}
+		}
+		return outputList;
+	}
 	
 	
 	
@@ -88,15 +119,23 @@ public class ArrayListPracticeLab
 	 * after the method finishes executing.
 	 */
 	
-	
+	public static void doubleList (ArrayList<String> inputList) {
+		int size = inputList.size();
+		for(int i = 0; i<size; i+=2) {
+			inputList.add(i+1,inputList.get(i));
+		}
+	}
 	
 	
 	
 	public static void main(String[] args) 
 	{
 		// Declare an ArrayList of String named myList.  Then fill it with: "this", "is", "it".  Print myList using printMe().
-		
-		
+		ArrayList<String> myList = new ArrayList<String>();
+		myList.add("this");
+		myList.add("is");
+		myList.add("it");
+		printMe(myList);
 		
 		
 		
@@ -110,7 +149,9 @@ public class ArrayListPracticeLab
 		String[] test_max_2 = {"Only one really long string"};
 		String[] test_max_3 = {};
 		
-		//printMe( maxLength( convertArrayToList(test_max_1) ) );
+		System.out.print( maxLength( convertArrayToList(test_max_1) ) + ", ");
+		System.out.print( maxLength( convertArrayToList(test_max_2) ) + ", ");
+		System.out.println( maxLength( convertArrayToList(test_max_3) ) );
 		
 		
 		
@@ -127,7 +168,10 @@ public class ArrayListPracticeLab
 		String[] test_swap_3 = {"don't move me"};
 		String[] test_swap_4 = {};
 
-		
+		printMe( swapPairs( convertArrayToList(test_swap_1) ) );
+		printMe( swapPairs( convertArrayToList(test_swap_2) ) );
+		printMe( swapPairs( convertArrayToList(test_swap_3) ) );
+		printMe( swapPairs( convertArrayToList(test_swap_4) ) );
 		
 
 		// To test your removeEvenLength method, convert the following to ArrayLists of Strings and 
@@ -140,7 +184,9 @@ public class ArrayListPracticeLab
 		String[] test_rem_2 = {"Did", "you", "solve", "it", "or", "what?"};
 		String[] test_rem_3 = {};
 				
-		
+		printMe( removeEvenLength( convertArrayToList(test_rem_1) ) );
+		printMe( removeEvenLength( convertArrayToList(test_rem_2) ) );
+		printMe( removeEvenLength( convertArrayToList(test_rem_3) ) );
 		
 		
 		// To test your doubleList method, convert the following to ArrayLists of Strings and 
@@ -153,6 +199,15 @@ public class ArrayListPracticeLab
 		String[] test_doub_2 = {"One string only"};		
 		String[] test_doub_3 = {};		
 		
+		ArrayList<String> doub_1 = convertArrayToList(test_doub_1);
+		ArrayList<String> doub_2 = convertArrayToList(test_doub_2);
+		ArrayList<String> doub_3 = convertArrayToList(test_doub_3);
+		doubleList(doub_1);
+		doubleList(doub_2);
+		doubleList(doub_3);
+		printMe(doub_1);
+		printMe(doub_2);
+		printMe(doub_3);
 	}
 		
 		
