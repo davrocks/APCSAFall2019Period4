@@ -2,10 +2,10 @@
 //APCS1 4th Period Ms. Dreyer
 //fracCalc takes in an expression (of integers, mixed numbers, or improper fractions) and calculates it
 
-package fracCalc;
+package oldfracCalc;
 import java.util.*;
 
-public class FracCalc {
+public class OldFracCalc {
 
     public static void main(String[] args) {
     	Scanner userInput = new Scanner(System.in);
