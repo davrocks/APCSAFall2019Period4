@@ -1,4 +1,5 @@
 //Davin Singh
+
 //APCS1 4th Period Ms. Dreyer
 //fracCalc takes in an expression (of integers, mixed numbers, or improper fractions) and calculates it
 
@@ -48,35 +49,6 @@ public class FracCalc {
     	toMixedNum(outputArr);
     	reduce(outputArr);
         return construct(outputArr);
-    }
-
-    public static int[] splitFrac (String fracInput) {
-    	int[] output = {0,0,1};                       //outputs int array of whole #, numerator, denominator
-    	String[] inputArr = fracInput.split("_");     //splits at underscore
-    	if (inputArr[0].indexOf("/") != -1) {         //tests if the input is just a fraction w/o a whole number (index 0 has "/")
-    		inputArr = inputArr[0].split("/");
-    		output[1] = Integer.parseInt(inputArr[0]);
-    		output[2] = Integer.parseInt(inputArr[1]);
-    		return output;                            //if the input is just fraction w/o whole number, return it
-    	}
-    	output[0] = Integer.parseInt(inputArr[0]);    //since it has a whole number, copy the whole number to the output array
-		if (inputArr.length == 2) {                   //if there is a fraction after the whole number, copy it to the output array.
-       		inputArr = inputArr[1].split("/");
-    		output[1] = Integer.parseInt(inputArr[0]);
-    		output[2] = Integer.parseInt(inputArr[1]);
-    	}
-    	return output;
-    }
-    
-    public static void toImproperFrac (int[][] inputArr) {
-    	for(int i = 0; i<inputArr.length; i++) {
-    		int temp = inputArr[i][0];
-    		inputArr[i][1] = inputArr[i][2]*Math.abs(inputArr[i][0]) + inputArr[i][1];
-    		if (temp < 0) {
-    			inputArr[i][1] *= -1;
-    		}
-    		inputArr[i][0] = 0;
-    	}
     }
     
     public static void add (int[] inputArr1, int[] inputArr2, int[] outputArr) {
