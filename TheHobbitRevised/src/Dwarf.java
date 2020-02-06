@@ -1,3 +1,8 @@
+//Davin Singh
+//APCS 1 4th Period
+//February 2020
+//Dwarf class, a subclass of traveler
+
 public class Dwarf extends Traveler
 {
 	//Dwarves will need a constructor, but there's nothing new for them beyond

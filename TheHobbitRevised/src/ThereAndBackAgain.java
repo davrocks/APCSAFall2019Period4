@@ -1,3 +1,8 @@
+//Davin Singh
+//APCS 1 4th Period
+//February 2020
+//Creates some characters from lord of the rings and makes them travel
+
 import java.util.ArrayList;
 
 public class ThereAndBackAgain 

@@ -1,3 +1,7 @@
+//Davin Singh
+//APCS 1 4th Period
+//February 2020
+//Creates  a Wizard object, which is a subclass of traveler. Wizards move faster and add a color to their name.
 
 public class Wizard extends Traveler
 {

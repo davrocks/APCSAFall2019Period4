@@ -1,3 +1,8 @@
+//Davin Singh
+//APCS 1 4th Period
+//February 2020
+//Hobbit class, a subclass of Traveler. Has a variable ringObsessed.
+
 
 public class Hobbit extends Traveler
 {

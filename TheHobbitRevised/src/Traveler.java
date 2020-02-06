@@ -1,3 +1,7 @@
+//Davin Singh
+//APCS 1 4th Period
+//February 2020
+//Traveler superclass, it can travel and have a name/get the name and distance traveled.
 
 public class Traveler 
 {
